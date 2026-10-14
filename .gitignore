@@ -1,0 +1,7 @@
+node_modules/
+*.log
+review*.md
+!README.md
+
+# Конфиги конкретных проектов живут в их репозиториях
+examples/*.ai-review.json

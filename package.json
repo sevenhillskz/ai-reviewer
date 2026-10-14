@@ -1,0 +1,11 @@
+{
+  "name": "@sevenhillskz/ai-reviewer",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "review:local": "node src/index.mjs --local"
+  }
+}

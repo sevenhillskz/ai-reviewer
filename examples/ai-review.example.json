@@ -1,0 +1,13 @@
+{
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "maxCostUsd": 3,
+  "minSeverity": "minor",
+  "instructions": ["CONTRIBUTING.md"],
+  "guides": [
+    { "path": "docs/conventions.md", "when": "нужно уточнить конвенции проекта" },
+    { "path": "docs/code-review-backend.md", "when": "изменения в backend/" }
+  ],
+  "notes": "Кратко о проекте: стек, главные риски, что не считать дефектом.",
+  "ignore": ["docs/archive/**"]
+}

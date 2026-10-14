@@ -1,0 +1,36 @@
+name: 7Hills AI Review
+description: Code review Pull Request через Claude API по стандартам Seven Hills
+inputs:
+  anthropic-api-key:
+    description: Ключ Anthropic API (secrets.ANTHROPIC_API_KEY)
+    required: true
+  github-token:
+    description: Токен для комментариев в PR
+    default: ${{ github.token }}
+  model:
+    description: Модель (по умолчанию из .github/ai-review.json или claude-opus-5-5)
+    default: ''
+  effort:
+    description: low | medium | high | xhigh | max
+    default: ''
+  max-cost:
+    description: Лимит стоимости одного ревью, USD
+    default: ''
+  config:
+    description: Путь к конфигу относительно корня репо
+    default: .github/ai-review.json
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 22
+    - shell: bash
+      run: node "$GITHUB_ACTION_PATH/src/index.mjs"
+      env:
+        ANTHROPIC_API_KEY: ${{ inputs.anthropic-api-key }}
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+        AI_REVIEW_MODEL: ${{ inputs.model }}
+        AI_REVIEW_EFFORT: ${{ inputs.effort }}
+        AI_REVIEW_MAX_COST: ${{ inputs.max-cost }}
+        AI_REVIEW_CONFIG: ${{ inputs.config }}
